@@ -1,0 +1,49 @@
+<div ng-app="" class="container">
+  <form ng-submit="submitForm()">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Enter task</label>
+      <input
+        type="text"
+        ng-model="task.name"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        placeholder="Enter task details"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+  <hr />
+  <h3>Your tasks list</h3>
+  <div ng-if="tasks != false">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Task</th>
+          <th scope="col">Status</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="task in tasks">
+          <th scope="row">{{$index + 1}}</th>
+          <td>{{task.name}}</td>
+          <td>
+            <button type="button" class="btn btn-primary">
+              {{task.status}}
+            </button>
+          </td>
+          <td>
+            <button type="button" class="btn btn-success">Update</button>
+            <button type="button" class="btn btn-danger">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div ng-if="tasks == false">
+    <p class="text-primary">No tasks found...</p>
+  </div>
+</div>
